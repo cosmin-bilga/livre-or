@@ -216,7 +216,7 @@ function submit_comment(string $comment, string $user_id): array
 }
 
 // Used to retrieve comments made in livre d'or
-function get_commentaires(int $amount = 0): array
+function get_commentaires(int $offset = 0, int $amount = 0): array
 {
 
     $conn = connect_database();
@@ -224,16 +224,35 @@ function get_commentaires(int $amount = 0): array
     if (!$conn = connect_database())
         return ["ok" => false, "message" => "Database connection failed", "data" => []];
 
-    $sql = "SELECT date, login, commentaire FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur=utilisateurs.id";
+    $sql = "SELECT date, login, commentaire FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur=utilisateurs.id ORDER BY date DESC";
 
     if ($amount > 0)
-        $sql .= " LIMIT " . $amount . ";";
+        $sql .= " LIMIT " . $amount . " OFFSET " . $offset . ";";
     else
-        $sql .= ";";
+        $sql .= "OFFSET" . $offset . ";";
 
     $result = sql_exec($sql, $conn);
     $result = $result->fetch_all(MYSQLI_ASSOC);
     $conn->close();
 
     return ["ok" => true, "message" => "Data succesfully retrieved", "data" => $result];
+}
+
+// Retrieves the number of comments in DB
+function get_comment_number()
+{
+    $conn = connect_database();
+
+    if (!$conn = connect_database())
+        return ["ok" => false, "message" => "Database connection failed", "data" => 0];
+
+    $sql = "SELECT count(*) as nb FROM commentaires";
+
+    $result = sql_exec($sql, $conn);
+    $result = $result->fetch_assoc();
+    $conn->close();
+
+    print_r($result);
+
+    return ["ok" => true, "message" => "Data succesfully retrieved", "data" => $result["nb"]];
 }

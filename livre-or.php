@@ -2,8 +2,20 @@
 session_start();
 
 include "model.php";
+const NB_PER_PAGE = 10; // Number of comments per page
 
-$res = get_commentaires();
+$res = get_comment_number();
+$page_number = (int) ($res["data"] / NB_PER_PAGE);
+if ($res["data"] % NB_PER_PAGE !== 0)
+    $page_number++;
+
+//echo "PAGE NB" . $page_number;
+
+if (!isset($_GET["page"]))
+    $_GET["page"] = 1;
+
+$offset = ((int)$_GET["page"] - 1) * NB_PER_PAGE;
+$res = get_commentaires($offset, NB_PER_PAGE);
 
 $data = $res["data"];
 

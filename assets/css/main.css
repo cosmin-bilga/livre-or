@@ -37,34 +37,60 @@ header img
 
 /* MAIN ######################## */
 
+main
+{
+    padding-top: 2vh;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+.page-menu
+{
+    display: flex;
+    justify-content: center;
+}
+
+.page-menu *
+{
+    margin: 3px;
+}
 
 /* LIVRE OR ######################## */
 
 .comment-card
 {
-    background-color: rgb(255, 64, 0);
+    
+    background: #42275a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #734b6d, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 15px;
     margin-top: 2vh;
     margin-bottom: 2vh;
     margin-left: 1vw;
     width: 98vw;
-    padding: 2%;
+    padding: 1%;
     display: flex;
+    min-height: 15vh;
+    box-shadow: #42275a 2px 2px 4px;
+    color: white;
 }
 
 .comment-info
 {
-    background-color: blue;
+
+
     width: 20%;
     margin-right: 5%;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     align-items: center;
+    border-right: 3px solid white;
 }
 
 .comment-content
 {
-    background-color: rgb(248, 131, 93);
+ 
     width: 75%;
     display: flex;
     justify-content: center;
@@ -73,8 +99,11 @@ header img
 
 .comment-content > p
 {
-    color:black;
+    border-top: 1px solid white;
+    text-align: center;
 }
+
+
 
 
 /* DESKTOP OR LARGE SCREENS */

@@ -8,7 +8,7 @@ $current_page = end($current_page);
     <img src="assets/media/squirrel.webp">
     <nav>
         <?php
-        echo "CURRENT PAGE " . $current_page;
+        //echo "CURRENT PAGE " . $current_page;
         if ($current_page !== "index.php")
             echo "<a href=\"index.php\"><img src=\"assets/media/profile.svg\">Accueil</a>";
         if (isset($_SESSION["logged_user"])) {
