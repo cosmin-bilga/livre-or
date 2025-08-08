@@ -32,7 +32,9 @@ if ($res["ok"]) {
 
 <body>
     <main>
-        <?php include "templates/registration-form.php"; ?>
+        <?php
+        include "templates/header.php";
+        include "templates/registration-form.php"; ?>
     </main>
 </body>
 

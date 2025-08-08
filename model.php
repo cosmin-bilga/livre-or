@@ -28,7 +28,7 @@ function connect_database()
 function sql_exec(string $sql, object $conn)
 {
     try {
-        echo "QUERY" . $sql;
+        //echo "QUERY" . $sql;
         $result = $conn->query($sql);
     } catch (mysqli_sql_exception $e) {
         echo 'Error: ' . $conn->error;

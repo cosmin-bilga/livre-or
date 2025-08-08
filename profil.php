@@ -27,7 +27,9 @@ if ($res["ok"])
 
 <body>
     <main>
-        <?php include "templates/profile-form.php"; ?>
+        <?php
+        include "templates/header.php";
+        include "templates/profile-form.php"; ?>
     </main>
 </body>
 
