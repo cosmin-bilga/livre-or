@@ -20,6 +20,7 @@ $res = check_connection($_POST);
 $_SESSION["message"] = $res["message"];
 if ($res["ok"]) {
     $_SESSION["logged_user"] = secure_string($_POST["login"]);
+    $_SESSION["logged_user_id"] = $res["id_user"];
     header('Location: index.php');
     exit();
 }

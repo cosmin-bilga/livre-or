@@ -121,6 +121,8 @@ function check_registration(array $form): array
     return ["ok" => false, "message" => "Form is empty."];
 }
 
+
+// Function used in connection to the website
 function check_connection(array $form): array
 {
     if ($form) {
@@ -130,19 +132,22 @@ function check_connection(array $form): array
         // Avoid injections
         $form['login'] = secure_string($form['login']);
 
-        $sql = "SELECT password FROM utilisateurs WHERE login='" . $form["login"] . "';";
+        $sql = "SELECT password,id FROM utilisateurs WHERE login='" . $form["login"] . "';";
 
         $result = sql_exec($sql, $conn);
         $pass = $result->fetch_assoc();
         $conn->close();
 
+
+
         if (isset($pass["password"]) and (password_verify($_POST["password"], $pass["password"])))
-            return ["ok" => true, "message" => "Welcome " . $form["login"]];
+            return ["ok" => true, "message" => "Welcome " . $form["login"], "id_user" => $pass["id"]];
         return ["ok" => false, "message" => "Please verify login and password."];
     }
     return ["ok" => false, "message" => null];
 }
 
+// Function used for user profile modifications
 function check_modification(array $form, string $current_user): array
 {
 
@@ -186,4 +191,49 @@ function check_modification(array $form, string $current_user): array
     }
 
     return ["ok" => false, "message" => null];
+}
+
+
+// Used for submit comment form
+function submit_comment(string $comment, string $user_id): array
+{
+    if (strlen($comment) > 10) {
+        $conn = connect_database();
+
+        if (!$conn = connect_database())
+            return ["ok" => false, "message" => "Database connection failed"];
+
+        // Avoid injections
+        $comment = secure_string($comment);
+
+        $sql = "INSERT INTO commentaires(commentaire,id_utilisateur) VALUES('" . $comment . "','" . $user_id . "');";
+        sql_exec($sql, $conn);
+        $conn->close();
+
+        return ["ok" => true, "message" => "The comment has been succesfully added."];
+    }
+    return ["ok" => false, "message" => "The comment must be atleast 10 characters long."];
+}
+
+// Used to retrieve comments made in livre d'or
+function get_commentaires(int $amount = 0): array
+{
+
+    $conn = connect_database();
+
+    if (!$conn = connect_database())
+        return ["ok" => false, "message" => "Database connection failed", "data" => []];
+
+    $sql = "SELECT date, login, commentaire FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur=utilisateurs.id";
+
+    if ($amount > 0)
+        $sql .= " LIMIT " . $amount . ";";
+    else
+        $sql .= ";";
+
+    $result = sql_exec($sql, $conn);
+    $result = $result->fetch_all(MYSQLI_ASSOC);
+    $conn->close();
+
+    return ["ok" => true, "message" => "Data succesfully retrieved", "data" => $result];
 }
