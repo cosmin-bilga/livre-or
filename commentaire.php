@@ -41,11 +41,12 @@ if (isset($_POST["comment"])) {
 </head>
 
 <body>
+    <?php include "templates/header.php"; ?>
     <main>
         <?php
-        include "templates/header.php";
         include "templates/comment-form.php"; ?>
     </main>
+    <?php include "templates/footer.php"; ?>
 </body>
 
 </html>

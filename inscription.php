@@ -36,6 +36,7 @@ if ($res["ok"]) {
         include "templates/header.php";
         include "templates/registration-form.php"; ?>
     </main>
+    <?php include "templates/footer.php"; ?>
 </body>
 
 </html>

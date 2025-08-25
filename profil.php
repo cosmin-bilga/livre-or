@@ -23,14 +23,16 @@ if ($res["ok"])
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
+    <?php include "templates/header.php"; ?>
     <main>
         <?php
-        include "templates/header.php";
         include "templates/profile-form.php"; ?>
     </main>
+    <?php include "templates/footer.php"; ?>
 </body>
 
 </html>

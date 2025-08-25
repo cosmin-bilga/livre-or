@@ -21,4 +21,7 @@
             echo "<a href=\"?page=" . (int) $_GET["page"] + 1 . "\">Page suivante</a>";
         ?>
     </div>
+    <?php
+    if (isset($_SESSION["logged_user"]))
+        include "comment-form.php"; ?>
 </main>

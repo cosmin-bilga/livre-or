@@ -42,6 +42,7 @@ if ($res["ok"]) {
         include "templates/header.php";
         include "templates/connection-form.php"; ?>
     </main>
+    <?php include "templates/footer.php"; ?>
 </body>
 
 </html>

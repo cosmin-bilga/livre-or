@@ -1,4 +1,4 @@
-<form action="connexion.php" method="post">
+<form action="connexion.php" method="post" class="connexion-form">
     <p>Connexion</p>
     <label for="login">Login:</label>
     <input type="text" name="login" id="login" <?php if (isset($_POST["login"])) echo "value=\"" . $_POST["login"] . "\"" ?>>

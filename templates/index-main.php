@@ -9,6 +9,8 @@
         <li>Des vœux ou pensées adressés à un hôte ou une personne célébrée.</li>
     </ul>
     <p>Cette page est une version de livre d'or virtuelle dans lequelle vous pouvez laisser des commentaires ou les consulter:</p>
-    <a href="livre-or.php">Acceder au "Livre d'or"</a>
-    <a href="commentaire.php">Laissez un commentaire</a>
+    <div class="main-links">
+        <a href="livre-or.php">Acceder au "Livre d'or"</a>
+        <a href="commentaire.php">Laissez un commentaire</a>
+    </div>
 </main>

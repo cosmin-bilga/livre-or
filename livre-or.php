@@ -35,7 +35,9 @@ $data = $res["data"];
 <body>
     <?php
     include "templates/header.php";
-    include "templates/livre-or-main.php"; ?>
+    include "templates/livre-or-main.php";
+    include "templates/footer.php";
+    ?>
 </body>
 
 </html>

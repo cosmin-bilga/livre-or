@@ -25,7 +25,8 @@ if (isset($_POST["Deconnexion"])) {
 <body>
     <?php
     include "templates/header.php";
-    include "templates/index-main.php"; ?>
+    include "templates/index-main.php";
+    include "templates/footer.php"; ?>
 </body>
 
 </html>

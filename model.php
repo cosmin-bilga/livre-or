@@ -252,7 +252,7 @@ function get_comment_number()
     $result = $result->fetch_assoc();
     $conn->close();
 
-    print_r($result);
+    //print_r($result);
 
     return ["ok" => true, "message" => "Data succesfully retrieved", "data" => $result["nb"]];
 }
