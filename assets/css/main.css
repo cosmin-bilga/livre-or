@@ -9,10 +9,12 @@ body
 {
     width: 100vw;
     overflow-x: hidden;
-     background: #D3CCE3;  /* fallback for old browsers */
+    background: #D3CCE3;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* HEADER ################## */
@@ -38,8 +40,8 @@ header nav
 
 header img
 {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 header a
@@ -51,6 +53,7 @@ header a
 header a img
 {
     padding-right: 5px;
+    vertical-align: middle;
 }
 
 header input
@@ -67,10 +70,17 @@ header input:hover
     cursor: pointer;
 }
 
+nav > a, nav > form
+{
+    padding: 4px;
+}
+
 header nav a:hover, header nav form:hover
 {
     background-color: rgba(255, 255, 255, 0.132);
     border-radius: 3px;
+    transform: translateY(-3px);
+    box-shadow: 2px 2px 4px black ;
 }
 
 /* MAIN ######################## */
@@ -83,12 +93,59 @@ main
     background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding-left: 3vw;
     padding-right: 3vw;
+    flex: 1;
 }
 
 main h1
 {
     text-align: center;
     margin: 3px;
+}
+
+main > h1:hover
+{
+    animation: spac 2s ease forwards;
+}
+
+main > h1:not(:hover)
+{
+    animation: spac_rev 2s ease forwards;
+}
+
+@keyframes spac 
+{
+    from
+    {
+        letter-spacing: default;
+        color: black;
+    }
+    to {
+        letter-spacing: 0.2rem;
+        color: rgb(204, 173, 0);
+        text-shadow: 1px 1px 2px black;
+    }
+}
+
+@keyframes spac_rev
+{
+    from
+    {
+        letter-spacing: 0.2rem;
+        color:rgb(204, 173, 0);
+        text-shadow: 1px 1px 2px black;
+    }
+    to {
+        letter-spacing: default;
+        color: black;
+    
+    }
+}
+
+.main-container
+{
+    padding: 3vw;
+    border-radius: 30px;
+    box-shadow: 1px 1px 2px black;
 }
 
 main p, main ul
@@ -102,6 +159,8 @@ main li
 }
 
 
+/** PAGE MENU **/
+
 .page-menu
 {
     display: flex;
@@ -111,6 +170,38 @@ main li
 .page-menu *
 {
     margin: 3px;
+}
+
+.page-menu > p, .page-menu > a
+{
+    padding: 3px;
+    color: white;
+    text-decoration: none;
+}
+
+.page-menu > a:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 1px 1px 2px black;
+}
+
+.button-prev-page
+{
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.button-next-page
+{
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.button-current-page
+{
+    background: #373B44;
 }
 
 .index-message
@@ -129,6 +220,7 @@ main li
 form input[type=submit]
 {
     margin-top: 1vh;
+    vertical-align: 60%;
 }
 
 /* LIVRE OR ######################## */
@@ -139,15 +231,15 @@ form input[type=submit]
     background: #42275a;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #734b6d, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    border-radius: 15px;
+    border-radius: 5px;
     margin-top: 2vh;
     margin-bottom: 2vh;
     margin-left: 1vw;
     width: 92vw;
-    padding: 1%;
+    padding: 5px;
     display: flex;
     min-height: 15vh;
-    box-shadow: #42275a 2px 2px 4px;
+    box-shadow: #010002 2px 2px 4px;
     color: white;
 }
 
@@ -159,9 +251,14 @@ form input[type=submit]
     padding-left: 2%;
     display: flex;  
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     border-right: 3px solid white;
     font-size: 0.7rem;
+}
+
+.comment-info-user
+{
+    color: rgb(205, 216, 2);
 }
 
 .comment-content
@@ -175,7 +272,10 @@ form input[type=submit]
 
 .comment-content > p
 {
-    border-top: 1px solid white;
+    /*border-top: 1px solid white; */
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    font-style: italic;
     text-align: center;
 }
 
@@ -195,9 +295,37 @@ form input[type=submit]
 .main-links
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
 }
+
+.main-links > a
+{
+    text-decoration: none;
+    color: white;
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome */
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.main-links > a:nth-child(even)
+{
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome */
+}
+
+.main-links > a:hover
+{
+    transform: translateY(-2px);
+    box-shadow: 1px 1px 2px black;
+}
+
+
+/****** FOOTER ****/
 
 footer
 {
@@ -205,6 +333,7 @@ footer
     text-align: center;
     background-color: black;
     color: white;
+    position: sticky;
 }
 
 footer a

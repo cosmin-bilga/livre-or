@@ -4,21 +4,23 @@
     ?>
         <div class="comment-card">
             <div class="comment-info">
-                <p>Posté par: <?php echo $comment['login']; ?></p>
+                <p>Posté par: <span class="comment-info-user"><?php echo $comment['login']; ?></span></p>
                 <p>Date création: <?php echo $comment['date']; ?></p>
             </div>
             <div class="comment-content">
-                <p><?php echo $comment['commentaire']; ?></p>
+                <p>
+                    <?php echo $comment['commentaire']; ?>
+                </p>
             </div>
         </div>
     <?php } ?>
     <div class="page-menu">
         <?php
         if ((int) $_GET["page"] !== 1)
-            echo "<a href=\"?page=" . (int) $_GET["page"] - 1 . "\">Page precedente</a>";
-        echo "<p>Page " . $_GET["page"] . "</p>";
+            echo "<a class='button-prev-page' href=\"?page=" . (int) $_GET["page"] - 1 . "\">Page precedente</a>";
+        echo "<p class='button-current-page'>Page " . $_GET["page"] . "</p>";
         if ((int) $_GET["page"] !== $page_number)
-            echo "<a href=\"?page=" . (int) $_GET["page"] + 1 . "\">Page suivante</a>";
+            echo "<a class='button-next-page' href=\"?page=" . (int) $_GET["page"] + 1 . "\">Page suivante</a>";
         ?>
     </div>
     <?php
