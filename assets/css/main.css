@@ -237,12 +237,16 @@ form input[type=submit]
 .comment-card
 {
     
+    position: sticky;
+    top: 0;
+    bottom: 0;
+
     background: #42275a;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #734b6d, #42275a);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border-radius: 5px;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 10vh;
     margin-left: 1vw;
     width: 92vw;
     padding: 5px;
