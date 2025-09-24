@@ -1,5 +1,5 @@
-<form action="inscription.php" method="post">
-    <p>Inscription</p>
+<form action="inscription.php" method="post" class="register-form">
+    <h2>Inscription</h2>
     <label for="login">Login:</label>
     <input type="text" name="login" id="login" <?php if (isset($_POST["login"])) echo "value=\"" . $_POST["login"] . "\"" ?>>
     <label for="password">Password:</label>

@@ -2,7 +2,6 @@
 session_start();
 include "model.php";
 
-
 // Don't have to see page is already logged in
 if (isset($_SESSION["logged_user"])) {
     header('Location: index.php');
@@ -17,7 +16,8 @@ if (isset($_POST["Deconnexion"])) {
 $current_page = get_current_page();
 $res = check_connection($_POST);
 
-$_SESSION["message"] = $res["message"];
+if (isset($res["message"]))
+    $_SESSION["message"] = $res["message"];
 if ($res["ok"]) {
     $_SESSION["logged_user"] = secure_string($_POST["login"]);
     $_SESSION["logged_user_id"] = $res["id_user"];
@@ -37,9 +37,9 @@ if ($res["ok"]) {
 </head>
 
 <body>
+    <?php include "templates/header.php"; ?>
     <main>
         <?php
-        include "templates/header.php";
         include "templates/connection-form.php"; ?>
     </main>
     <?php include "templates/footer.php"; ?>

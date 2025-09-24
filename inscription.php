@@ -12,7 +12,9 @@ $current_page = get_current_page();
 $res = check_registration($_POST);
 
 
-$_SESSION["message"] = $res["message"];
+if (isset($res["message"]))
+    $_SESSION["message"] = $res["message"];
+
 if ($res["ok"]) {
     header('Location: connexion.php');
     exit();
@@ -31,9 +33,9 @@ if ($res["ok"]) {
 </head>
 
 <body>
+    <?php include "templates/header.php"; ?>
     <main>
         <?php
-        include "templates/header.php";
         include "templates/registration-form.php"; ?>
     </main>
     <?php include "templates/footer.php"; ?>

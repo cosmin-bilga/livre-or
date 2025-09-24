@@ -88,6 +88,8 @@ function get_current_page()
 function check_registration(array $form): array
 {
 
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST')
+        return ["ok" => false];
     if (count($form) > 0) {
 
         if (!$conn = connect_database())

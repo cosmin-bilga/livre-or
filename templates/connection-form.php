@@ -1,5 +1,5 @@
 <form action="connexion.php" method="post" class="connexion-form">
-    <p>Connexion</p>
+    <h2>Connexion</h2>
     <label for="login">Login:</label>
     <input type="text" name="login" id="login" <?php if (isset($_POST["login"])) echo "value=\"" . $_POST["login"] . "\"" ?>>
     <label for="password">Password:</label>

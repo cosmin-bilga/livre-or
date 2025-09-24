@@ -211,10 +211,19 @@ main li
     text-align: center;
 }
 
-.form-profil, .connexion-form
+.form-profil, .connexion-form, .register-form
 {
     display: flex;
     flex-direction: column;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.register-form > h2, .connexion-form > h2, .form-profil > h2
+{
+    margin-bottom: 5vh;
+    margin-top: 5vh;
 }
 
 form input[type=submit]
@@ -285,6 +294,10 @@ form input[type=submit]
     flex-direction: column;
     text-align: center;
     border-top: 1px solid black;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
 }
 
 .comment-form *
