@@ -7,12 +7,12 @@ foreach ($comments as $comment) {
         <div class="comment-info">
             <p>Posté par: <span class="comment-info-user"><?php echo $comment['login']; ?></span></p>
             <p>Date création: <?php echo $comment['date']; ?></p>
-            <form method="post" action="profil.php">
+            <form method="post" action="profil.php" class="delete-form">
                 <input type="hidden" name="comment-id" value="<?php echo $comment['id']; ?>">
-                <input type="submit" name="delete-comment" value="Supprimer commentaire">
+                <input type="submit" name="delete-comment" value="Supprimer" class="delete-button">
             </form>
         </div>
-        <div class="comment-content">
+        <div class=" comment-content">
             <p>
                 <?php echo $comment['commentaire']; ?>
             </p>

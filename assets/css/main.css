@@ -307,6 +307,19 @@ form input[type=submit]
     margin-top: 3vh;
 }
 
+.delete-form
+{
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delete-button
+{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .comment-form *
 {
     margin:1vw;
