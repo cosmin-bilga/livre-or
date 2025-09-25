@@ -7,7 +7,7 @@
     <label for="password-repeat">Répetez le password:</label>
     <input type="password" name="password-repeat" id="password-repeat">
     <?php
-    if ($res["ok"])
+    if (isset($res["ok"]))
         echo "<p class=\"input-message\">" . $_SESSION["message"] . "</p>";
     elseif (isset($_SESSION["message"]))
         echo "<p class=\"input-error\">" . $_SESSION["message"] . "</p>";

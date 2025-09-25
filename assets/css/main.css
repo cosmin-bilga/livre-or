@@ -254,6 +254,11 @@ form input[type=submit]
     color: white;
 }
 
+.comment-card-profile
+{
+    position: static;
+}
+
 .comment-info
 {
 

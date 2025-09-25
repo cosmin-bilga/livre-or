@@ -218,7 +218,7 @@ function submit_comment(string $comment, string $user_id): array
 }
 
 // Used to retrieve comments made in livre d'or
-function get_commentaires(int $offset = 0, int $amount = 0): array
+function get_commentaires(int $offset = 0, int $amount = 0, $user_id = null): array
 {
 
     $conn = connect_database();
@@ -226,12 +226,17 @@ function get_commentaires(int $offset = 0, int $amount = 0): array
     if (!$conn = connect_database())
         return ["ok" => false, "message" => "Database connection failed", "data" => []];
 
-    $sql = "SELECT date, login, commentaire FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur=utilisateurs.id ORDER BY date DESC";
+    $sql = "SELECT date, login, commentaire, commentaires.id AS id FROM commentaires INNER JOIN utilisateurs on commentaires.id_utilisateur=utilisateurs.id";
 
+    if (isset($user_id))
+        $sql .= " WHERE utilisateurs.login=\"" . $user_id . "\" ";
+
+    $sql .= " ORDER BY date DESC ";
     if ($amount > 0)
         $sql .= " LIMIT " . $amount . " OFFSET " . $offset . ";";
-    else
-        $sql .= "OFFSET" . $offset . ";";
+    else if ($offset > 0)
+        $sql .= "OFFSET " . $offset . ";";
+
 
     $result = sql_exec($sql, $conn);
     $result = $result->fetch_all(MYSQLI_ASSOC);
@@ -257,4 +262,18 @@ function get_comment_number()
     //print_r($result);
 
     return ["ok" => true, "message" => "Data succesfully retrieved", "data" => $result["nb"]];
+}
+
+function delete_comment($comment_id)
+{
+
+    $conn = connect_database();
+
+    if (!$conn = connect_database())
+        return ["ok" => false, "message" => "Database connection failed", "data" => []];
+
+    $sql = "DELETE from commentaires WHERE id=$comment_id;";
+
+    sql_exec($sql, $conn);
+    $conn->close();
 }
