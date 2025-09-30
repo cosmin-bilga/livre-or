@@ -5,7 +5,12 @@
         <div class="comment-card">
             <div class="comment-info">
                 <p>Posté par: <span class="comment-info-user"><?php echo $comment['login']; ?></span></p>
-                <p>Date création: <?php echo $comment['date']; ?></p>
+                <p>Date création: <?php $str = explode(' ', $comment['date'])[0];
+                                    $str = explode('-', $str);
+                                    $str = array_reverse($str);
+                                    $str = implode('/', $str);
+                                    echo $str;
+                                    ?></p>
             </div>
             <div class="comment-content">
                 <p>
